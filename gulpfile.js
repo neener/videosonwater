@@ -38,8 +38,20 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('fail'));
 });
 
+var copy = require('gulp-copy');
+gulp.task('html', function(){
+  return gulp.src('./src/*.html')
+    .pipe( copy("./dist") );
+});
+
+gulp.task('textures', function(){
+  return gulp.src('./src/textures/*')
+    .pipe( copy("./dist/textures") );
+});
 
 gulp.task('watch', function(){
     gulp.watch('./src/js/**/*.js', ['lint', 'browserify']);
+    gulp.watch('./src/*.html', ['html']);
+    gulp.watch('./src/textures/*', ['textures']);
 });
 
