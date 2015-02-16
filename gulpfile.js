@@ -32,26 +32,27 @@ var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 
 gulp.task('lint', function() {
-  return gulp.src('./src/js/**/*.js')
+  return gulp.src(['./src/js/**/*.js', '!./src/js/WaterLoader.js'])
     .pipe( jshint() )
     .pipe( jshint.reporter( stylish ) )
     .pipe(jshint.reporter('fail'));
 });
 
-var copy = require('gulp-copy');
 gulp.task('html', function(){
   return gulp.src('./src/*.html')
-    .pipe( copy("./dist") );
+    .pipe( gulp.dest('./dist') );
 });
 
 gulp.task('textures', function(){
-  return gulp.src('./src/textures/*')
-    .pipe( copy("./dist/textures") );
+  return gulp.src('./src/textures/**/*')
+    .pipe( gulp.dest('./dist/textures'));
 });
+
+gulp.task('build', ['lint', 'browserify', 'html', 'textures']);
 
 gulp.task('watch', function(){
     gulp.watch('./src/js/**/*.js', ['lint', 'browserify']);
     gulp.watch('./src/*.html', ['html']);
-    gulp.watch('./src/textures/*', ['textures']);
+    gulp.watch('./src/textures/**/*', ['textures']);
 });
 

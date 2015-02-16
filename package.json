@@ -18,6 +18,7 @@
   "homepage": "https://github.com/neener/videosonwater",
   "dependencies": {
     "browserify": "^8.1.1",
+    "domready": "^1.0.7",
     "gulp": "^3.8.10",
     "gulp-copy": "0.0.2",
     "gulp-jshint": "^1.9.0",
