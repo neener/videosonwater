@@ -1,14 +1,9 @@
- var Ball = function(THREE, texture, video, ctx, scene, settings){
+ var Ball = function(THREE, material, video, ctx, scene, settings){
+    
     this.video = video;
     this.ctx = ctx;
-    this.texture = texture;
-    this.material = new THREE.MeshPhongMaterial( {
-      color: 0xffffff, //the base color of the object, white here
-      ambient: 0xffffff, //ambient color of the object, also white
-      specular: 0x050505, //color for specular highlights, a dark grey here
-      shininess: 50,
-      map: this.texture //the texture you created from the video
-    });
+
+    this.material = material;
 
     this.geometry = new THREE.SphereGeometry(100, 32, 32);
     
@@ -35,7 +30,9 @@
     this.mesh.position.z = settings.position.z;
  
     this.mesh.scale.x = this.mesh.scale.y = this.mesh.scale.z = settings.scale;
- 
+    
+    this.mesh.rotation.y = -30;
+
     this.scale = settings.scale;
     this.miny = settings.minz;
     this.maxy = settings.maxz;
@@ -44,9 +41,10 @@
  
     scene.add(this.mesh);
 };
+
 Ball.prototype.render = function(){
     this.ctx.drawImage( this.video, 0, 0 );
-    this.texture.needsUpdate = true;
+    this.material.map.needsUpdate = true;
 };
 
 Ball.prototype.move = function(){

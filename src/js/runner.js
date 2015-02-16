@@ -3,4 +3,5 @@ var domReady = require('domready');
 
 domReady(function(){
     var app = new App();
+
 });

@@ -20,7 +20,7 @@ gulp.task('browserify', function() {
       .pipe(source('application.js'))
       .pipe(buffer())
       .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(uglify())
+        // .pipe(uglify())
       .pipe(sourcemaps.write('./maps'))
       .pipe(gulp.dest('./dist/js/'));
   };
@@ -32,7 +32,7 @@ var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 
 gulp.task('lint', function() {
-  return gulp.src(['./src/js/**/*.js', '!./src/js/WaterLoader.js'])
+  return gulp.src(['./src/js/**/*.js', '!./src/js/*Loader.js'])
     .pipe( jshint() )
     .pipe( jshint.reporter( stylish ) )
     .pipe(jshint.reporter('fail'));
