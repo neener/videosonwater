@@ -122,16 +122,16 @@ App.prototype.makeEnvironment = function(){
 App.prototype.addBalls = function(){
 	this.balls = [];
 	
-	var counter = 1;
+	var counter = 3;
 	
 	var textures = [
-			{texturePath: "/textures/videos/donttellme.mp4", settings: {scale: 0.025, maxz: 100, minz: -100, direction: 1, position: {x: 0 , y: 0 , z: 0 }}}, 
-			// {texturePath: "/textures/videos/freakudown.mp4", settings: {scale: 1, maxz: 100, minz: -100, direction: 1, position: {x: 10 , y: 10 , z: 25 }}}, 
-			// {texturePath: "/textures/videos/givemeskin.mp4", settings: {scale: 1, maxz: 100, minz: -100, direction: 1, position: {x: 1 , y: 10 , z: 25 }}}, 
-			// {texturePath: "/textures/videos/groundunderwater.mp4", settings: {scale: 1, maxz: 100, minz: -100, direction: 1, position: {x: 15 , y: 10 , z: 25 }}}, 
-			// {texturePath: "/textures/videos/illbemyownreflection.mp4", settings: {scale: 1, maxz: 100, minz: -100, direction: 1, position: {x: 20 , y: 10 , z: 25 }}}, 
-			// {texturePath: "/textures/videos/matchbook.mp4", settings: {scale: 1, maxz: 100, minz: -100, direction: 1, position: {x: -5 , y: 10 , z: 25 }}}, 
-			// {texturePath: "/textures/videos/twentyone.mp4", settings: {scale: 1, maxz: 100, minz: -100, direction: 1, position: {x: -10 , y:10 , z: 25 }}}
+			{texturePath: "/textures/videos/donttellme.mp4", settings: {scale: 0.025, maxz: 0.05, minz: -0.050, direction: 1, position: {x: 0 , y: 0 , z: 0 }}}, 
+			{texturePath: "/textures/videos/freakudown.mp4", settings: {scale: 0.035, maxz: 0.05, minz: -0.50, direction: 1, position: {x: 5 , y: 5 , z: 5 }}}, 
+			{texturePath: "/textures/videos/givemeskin.mp4", settings: {scale: 0.035, maxz: 0.05, minz: -0.50, direction: 1, position: {x: 10 , y: 8 , z: 8}}}
+			// {texturePath: "/textures/videos/groundunderwater.mp4", settings: {scale: 0.025, maxz: 1, minz: -100, direction: 1, position: {x: 3 , y: 3 , z: 3 }}}, 
+			// {texturePath: "/textures/videos/illbemyownreflection.mp4", settings: {scale: 0.025, maxz: 1, minz: -100, direction: 1, position: {x: 4 , y: 4 , z: 4 }}}, 
+			// {texturePath: "/textures/videos/matchbook.mp4", settings: {scale: 0.025, maxz: 1, minz: -100, direction: 1, position: {x: 5 , y: 5 , z: 5 }}}, 
+			// {texturePath: "/textures/videos/twentyone.mp4", settings: {scale: 0.025, maxz: 1, minz: -100, direction: 1, position: {x: 6 , y: 6, z: 6 }}}
 	];
 	
 	textures.forEach(function(settings){
@@ -173,7 +173,7 @@ App.prototype.addBalls = function(){
 					var ball = new Ball(THREE, material, vid, videocanvasctx, self.scene, settings.settings);
 					self.balls.push(ball);
 					if(counter === 0) self.init();
-					vid.removeEventListener('canplaythrough', videoload)
+					vid.removeEventListener('canplaythrough', videoload);
 				});
 	}, this);
 
