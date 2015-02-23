@@ -18,7 +18,7 @@ var App = function(){
    this.camera.position.set( 0, 50, 0 );
    this.camera.lookAt(new THREE.Vector3(0,0,0));
 
-   this.renderer = new THREE.WebGLRenderer();
+   this.renderer = new THREE.WebGLRenderer({ antialias: true });
    this.renderer.setSize( this.width, this.height);
    this.container.appendChild( this.renderer.domElement );
 
@@ -28,10 +28,8 @@ var App = function(){
    this.ambientLight = new THREE.AmbientLight( 0x202020 );
    this.scene.add( this.ambientLight );
 
-   this.directionalLight = new THREE.DirectionalLight( 0xffffff, 2);
-   this.directionalLight.position.x = 0;
-   this.directionalLight.position.y = 50;
-   this.directionalLight.position.z = 0;
+   this.directionalLight = new THREE.DirectionalLight( 0xffffff, 1);
+   this.directionalLight.position.set( 0, 5, 0 );
    this.directionalLight.position.normalize();
    this.scene.add( this.directionalLight );
 
@@ -122,16 +120,16 @@ App.prototype.makeEnvironment = function(){
 App.prototype.addBalls = function(){
 	this.balls = [];
 	
-	var counter = 3;
+	var counter = 7;
 	
 	var textures = [
-			{texturePath: "/textures/videos/donttellme.mp4", settings: {scale: 0.025, maxz: 0.05, minz: -0.050, direction: 1, position: {x: 0 , y: 0 , z: 0 }}}, 
-			{texturePath: "/textures/videos/freakudown.mp4", settings: {scale: 0.035, maxz: 0.05, minz: -0.50, direction: 1, position: {x: 5 , y: 5 , z: 5 }}}, 
-			{texturePath: "/textures/videos/givemeskin.mp4", settings: {scale: 0.035, maxz: 0.05, minz: -0.50, direction: 1, position: {x: 10 , y: 8 , z: 8}}}
-			// {texturePath: "/textures/videos/groundunderwater.mp4", settings: {scale: 0.025, maxz: 1, minz: -100, direction: 1, position: {x: 3 , y: 3 , z: 3 }}}, 
-			// {texturePath: "/textures/videos/illbemyownreflection.mp4", settings: {scale: 0.025, maxz: 1, minz: -100, direction: 1, position: {x: 4 , y: 4 , z: 4 }}}, 
-			// {texturePath: "/textures/videos/matchbook.mp4", settings: {scale: 0.025, maxz: 1, minz: -100, direction: 1, position: {x: 5 , y: 5 , z: 5 }}}, 
-			// {texturePath: "/textures/videos/twentyone.mp4", settings: {scale: 0.025, maxz: 1, minz: -100, direction: 1, position: {x: 6 , y: 6, z: 6 }}}
+			{texturePath: "/textures/videos/donttellme.mp4", settings: {scale: 0.035, maxz: 0.50, minz: -1, direction: 1, position: {x: 25 , y: 0 , z: 0 }}}, 
+			{texturePath: "/textures/videos/freakudown.mp4", settings: {scale: 0.025, maxz: 1, minz: 3, direction: 1, position: {x: 0 , y: 25, z: 5 }}}, 
+			{texturePath: "/textures/videos/givemeskin.mp4", settings: {scale: 0.035, maxz: 0.05, minz: -0.50, direction: 0, position: {x: -25 , y: 0 , z: 0 }}},
+			{texturePath: "/textures/videos/groundunderwater.mp4", settings: {scale: 0.035, maxz: 0.05, minz: -0.50, direction: 0, position: {x: -25 , y: 10 , z: 10 }}}, 
+			{texturePath: "/textures/videos/illbemyownreflection.mp4", settings: {scale: 0.025, maxz: 0.05, minz: -0.50, direction: 0, position: {x: -28, y: 10, z: -10 }}}, 
+			{texturePath: "/textures/videos/matchbook.mp4", settings: {scale: 0.025, maxz: 0.05, minz: -0.50, direction: 0, position: {x: 0 , y: 25 , z: -5 }}}, 
+			{texturePath: "/textures/videos/twentyone.mp4", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction: 0, position: {x: 15 , y: 5 , z: 6 }}}
 	];
 	
 	textures.forEach(function(settings){

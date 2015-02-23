@@ -31,9 +31,8 @@
  
     this.mesh.scale.x = this.mesh.scale.y = this.mesh.scale.z = settings.scale;
     
-    this.mesh.rotation.x = Math.PI;
-
-  
+    this.mesh.rotation.x = Math.PI / 2.50;
+    this.mesh.rotation.y = Math.PI / 1;
 
     this.scale = settings.scale;
     this.miny = settings.minz;
@@ -41,7 +40,7 @@
  
     this.currentDirection = settings.direction;
 
-    this.mesh.receiveShadow = true;
+    // this.mesh.receiveShadow = true;
  
     scene.add(this.mesh);
 };
