@@ -2,6 +2,7 @@ var THREE = require('three');
 require('./MirrorLoader.js')(THREE);
 require('./WaterLoader.js')(THREE);
 
+window.balls = [];
 
 var Ball = require('./Ball.js');
 
@@ -13,9 +14,9 @@ var App = function(){
    this.height = window.innerHeight;
    this.width = window.innerWidth;
 
-   this.camera = new THREE.PerspectiveCamera( 55, this.width / this.height, 0.5, 3000000 );
+   window.camera = this.camera = new THREE.PerspectiveCamera( 45, this.width / this.height, 0.5, 3000000 );
    this.camera.up = new THREE.Vector3(0,0,1);
-   this.camera.position.set( 0, 50, 0 );
+   this.camera.position.set( 10, 65, 0 );
    this.camera.lookAt(new THREE.Vector3(0,0,0));
 
    this.renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -28,8 +29,8 @@ var App = function(){
    this.ambientLight = new THREE.AmbientLight( 0x202020 );
    this.scene.add( this.ambientLight );
 
-   this.directionalLight = new THREE.DirectionalLight( 0xffffff, 1);
-   this.directionalLight.position.set( 0, 5, 0 );
+   this.directionalLight = new THREE.DirectionalLight( 0xff99ff, 1.5 );
+   this.directionalLight.position.set( 0, 1, 0 );
    this.directionalLight.position.normalize();
    this.scene.add( this.directionalLight );
 
@@ -39,6 +40,7 @@ var App = function(){
    this.makeEnvironment();
    
    this.addBalls();
+   // this.init();
 };
 
 App.prototype.makeWater = function(){
@@ -119,20 +121,22 @@ App.prototype.makeEnvironment = function(){
 
 App.prototype.addBalls = function(){
 	this.balls = [];
+
+	var urls = ["http://youtu.be/KGinfh-FDs4", "/freakudown", "givemeskin.mp4", "groundunderwater.mp4", "illbemyownreflection", "matchbook", "twentyone"]
 	
 	var counter = 7;
 	
 	var textures = [
-			{texturePath: "/textures/videos/donttellme.mp4", settings: {scale: 0.035, maxz: 0.50, minz: -1, direction: 1, position: {x: 25 , y: 0 , z: 0 }}}, 
-			{texturePath: "/textures/videos/freakudown.mp4", settings: {scale: 0.025, maxz: 1, minz: 3, direction: 1, position: {x: 0 , y: 25, z: 5 }}}, 
-			{texturePath: "/textures/videos/givemeskin.mp4", settings: {scale: 0.035, maxz: 0.05, minz: -0.50, direction: 0, position: {x: -25 , y: 0 , z: 0 }}},
-			{texturePath: "/textures/videos/groundunderwater.mp4", settings: {scale: 0.035, maxz: 0.05, minz: -0.50, direction: 0, position: {x: -25 , y: 10 , z: 10 }}}, 
-			{texturePath: "/textures/videos/illbemyownreflection.mp4", settings: {scale: 0.025, maxz: 0.05, minz: -0.50, direction: 0, position: {x: -28, y: 10, z: -10 }}}, 
-			{texturePath: "/textures/videos/matchbook.mp4", settings: {scale: 0.025, maxz: 0.05, minz: -0.50, direction: 0, position: {x: 0 , y: 25 , z: -5 }}}, 
-			{texturePath: "/textures/videos/twentyone.mp4", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction: 0, position: {x: 15 , y: 5 , z: 6 }}}
+			{texturePath: "/textures/videos/donttellme.mp4", settings: {scale: 0.035, maxz: 0.5, minz: -0.5, direction: 1, position: {x: 25 , y: 0 , z: 0 }}}, 
+			{texturePath: "/textures/videos/freakudown.mp4", settings: {scale: 0.025, maxz: 0.5, minz: -0.05, direction: 1, position: {x: 0 , y: 25, z: 5 }}}, 
+			{texturePath: "/textures/videos/givemeskin.mp4", settings: {scale: 0.035, maxz: 0.5, minz: -0.5, direction: 1, position: {x: -25 , y: 0 , z: 0 }}},
+			{texturePath: "/textures/videos/groundunderwater.mp4", settings: {scale: 0.035, maxz: 0.5, minz: -0.5, direction: 1, position: {x: -25 , y: 10 , z: 10 }}}, 
+			{texturePath: "/textures/videos/illbemyownreflection.mp4", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction: 1, position: {x: -28, y: 10, z: -10 }}}, 
+			{texturePath: "/textures/videos/matchbook.mp4", settings: {scale: 0.025, maxz: -5, minz: 5, direction: -1, position: {x: 0 , y: 25 , z: -5 }}}, 
+			{texturePath: "/textures/videos/twentyone.mp4", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction: 1, position: {x: 15 , y: 5 , z: 6 }}}
 	];
 	
-	textures.forEach(function(settings){
+	textures.forEach(function(settings, i){
 		var self = this;
 		
 		var video = document.createElement( 'video' );
@@ -149,15 +153,15 @@ App.prototype.addBalls = function(){
 				var videocanvasctx = videocanvas.getContext( '2d' );
 
 					// set its size
-					videocanvas.width = 320;
-					videocanvas.height = 380;
+					videocanvas.width = 256;
+					videocanvas.height = 256;
 
 					// draw black rectangle so spheres don't start out transparent
 					videocanvasctx.fillStyle = "#000000";
-					videocanvasctx.fillRect( 0, 0, 380, 380 );
+					videocanvasctx.fillRect( 0, 0, 256, 256 );
 
 					// add canvas to new texture
-					var spheretexture = new THREE.Texture(videocanvas, new THREE.SphericalReflectionMapping());
+					var spheretexture = new THREE.Texture(videocanvas, THREE.SphericalReflectionMapping);
 
 					// add texture to material that will be wrapped around the sphere
 					var material = new THREE.MeshPhongMaterial( {
@@ -168,8 +172,10 @@ App.prototype.addBalls = function(){
 						map: spheretexture //the texture you created from the video
 						} );
 					
-					var ball = new Ball(THREE, material, vid, videocanvasctx, self.scene, settings.settings);
+					var ball = new Ball(THREE, material, vid, videocanvasctx, self.scene, settings.settings, urls[i]);
+					
 					self.balls.push(ball);
+					window.balls.push(ball);
 					if(counter === 0) self.init();
 					vid.removeEventListener('canplaythrough', videoload);
 				});
@@ -179,8 +185,26 @@ App.prototype.addBalls = function(){
 
 App.prototype.init = function(){
 	window.requestAnimationFrame( this.render.bind(this) );
+	window.addEventListener('click', this.rayTrace.bind(this));
 };
 
+App.prototype.rayTrace = function(event){
+	var vector = new THREE.Vector3();
+	var raycaster = new THREE.Raycaster();
+	var dir = new THREE.Vector3();
+
+	vector.set(
+		( event.clientX / window.innerWidth ) * 2 - 1,
+		- (event.clientY / window.innerHeight ) * 2 + 1,
+		0.5 );
+
+	vector.unproject(this.camera);
+
+	raycaster.set(camera.position, vector.sub(this.camera.position).normalize());
+	
+	var intersects = raycaster.intersectObjects(this.scene.children, false);
+	window.open(intersects[0].object.url)
+};
 App.prototype.render = function(){
 
 	this.balls.forEach(function(ball){
@@ -189,7 +213,11 @@ App.prototype.render = function(){
 	});
 
 	this.water.material.uniforms.time.value += 1.0 / 400.0;
-	this.water.render();
+	try{
+		this.water.render();
+	} catch(e){
+
+	}
 	this.renderer.render( this.scene, this.camera );
 
 	window.requestAnimationFrame(this.render.bind(this));

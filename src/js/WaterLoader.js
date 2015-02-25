@@ -27,7 +27,6 @@ function WaterLoader(THREE){
 		vertexShader: [
 			'uniform mat4 textureMatrix;',
 			'uniform float time;',
-			'varying vec2 vUv;',
 			'varying vec4 mirrorCoord;',
 			'varying vec3 worldPosition;',
 			'uniform vec3 eye;',

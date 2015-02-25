@@ -1,4 +1,4 @@
- var Ball = function(THREE, material, video, ctx, scene, settings){
+ var Ball = function(THREE, material, video, ctx, scene, settings, url){
     
     this.video = video;
     this.ctx = ctx;
@@ -24,6 +24,7 @@
 
 
     this.mesh = new THREE.Mesh(this.geometry, this.material);
+    this.mesh.url = url;
  
     this.mesh.position.x = settings.position.x;
     this.mesh.position.y = settings.position.y;
