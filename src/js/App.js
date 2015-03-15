@@ -26,10 +26,10 @@ var App = function(){
    this.pointLight = new THREE.PointLight( 0xffffff, 1, 100 );
    this.pointLight.position.set( 50, 50, 50 );
 
-   this.ambientLight = new THREE.AmbientLight( 0x202020 );
+   this.ambientLight = new THREE.AmbientLight( 0xffffff );
    this.scene.add( this.ambientLight );
 
-   this.directionalLight = new THREE.DirectionalLight( 0xff99ff, 1.5 );
+   this.directionalLight = new THREE.DirectionalLight( 0xff99ff, 0.5 );
    this.directionalLight.position.set( 0, 1, 0 );
    this.directionalLight.position.normalize();
    this.scene.add( this.directionalLight );
@@ -49,14 +49,14 @@ App.prototype.makeWater = function(){
        waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping; 
 
    this.water = new THREE.Water( this.renderer, this.camera, this.scene, {
-		textureWidth: 2048 , 
-		textureHeight: 2048,
+		textureWidth: 1024, 
+		textureHeight: 1024,
 		waterNormals: waterNormals,
 		alpha: 0.5,
 		sunDirection: this.pointLight.position.normalize(),
 		sunColor: 0xffffff,
-		waterColor: 0xee0000,
-		distortionScale: 50.0
+		waterColor: 0xe2cde4,
+		distortionScale: 5
 	} );
 
    this.waterPlane = new THREE.Mesh(
@@ -124,68 +124,60 @@ App.prototype.addBalls = function(){
 
 	var urls = ["http://youtu.be/KGinfh-FDs4", "/freakudown", "givemeskin.mp4", "groundunderwater.mp4", "illbemyownreflection", "matchbook", "twentyone"]
 	
-	var counter = 7;
 	
 	var textures = [
-			{texturePath: "/textures/videos/donttellme.mp4", settings: {scale: 0.035, maxz: 0.5, minz: -0.5, direction: 1, position: {x: 25 , y: 0 , z: 0 }}}, 
-			{texturePath: "/textures/videos/freakudown.mp4", settings: {scale: 0.025, maxz: 0.5, minz: -0.05, direction: 1, position: {x: 0 , y: 25, z: 5 }}}, 
-			{texturePath: "/textures/videos/givemeskin.mp4", settings: {scale: 0.035, maxz: 0.5, minz: -0.5, direction: 1, position: {x: -25 , y: 0 , z: 0 }}},
-			{texturePath: "/textures/videos/groundunderwater.mp4", settings: {scale: 0.035, maxz: 0.5, minz: -0.5, direction: 1, position: {x: -25 , y: 10 , z: 10 }}}, 
-			{texturePath: "/textures/videos/illbemyownreflection.mp4", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction: 1, position: {x: -28, y: 10, z: -10 }}}, 
-			{texturePath: "/textures/videos/matchbook.mp4", settings: {scale: 0.025, maxz: -5, minz: 5, direction: -1, position: {x: 0 , y: 25 , z: -5 }}}, 
-			{texturePath: "/textures/videos/twentyone.mp4", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction: 1, position: {x: 15 , y: 5 , z: 6 }}}
+			{texturePath: "/textures/videos/montagedonttellme.jpg", settings: {scale: 0.035, maxz: 1, minz: -1, direction:1, position: {x: 25 , y: 0 , z: 0 }}}, 
+			{texturePath: "/textures/videos/montagefreakudown.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.05, direction:-1, position: {x: 0 , y: 25, z: 5 }}}, 
+			{texturePath: "/textures/videos/montagegivemeskin.jpg", settings: {scale: 0.035, maxz: 0.5, minz: -0.5, direction:0, position: {x: -20 , y: 0 , z: 0 }}},
+			{texturePath: "/textures/videos/montagegroundunderwater.jpg", settings: {scale: 0.035, maxz: 0.5, minz: -0.5, direction:0, position: {x: -25 , y: 10 , z: 10 }}}, 
+			{texturePath: "/textures/videos/montageillbemyownreflection.jpg", settings: {scale: 0.050, maxz: 0.5, minz: -0.5, direction:0, position: {x: -28, y: 10, z: -10 }}}, 
+			{texturePath: "/textures/videos/montagematchbook.jpg", settings: {scale: 0.040, maxz: -5, minz: 5, direction: 0, position: {x: 5 , y: 35 , z: -7 }}}, 
+			{texturePath: "/textures/videos/montagetwentyone.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction:0, position: {x: 15 , y: 5 , z: 6 }}},
+			{texturePath: "/textures/videos/montageonlygirlintheworld.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction:0, position: {x: 25, y: 15 , z: 16 }}}
+
 	];
 	
 	textures.forEach(function(settings, i){
 		var self = this;
 		
-		var video = document.createElement( 'video' );
-			video.loop = true;
-			video.src = settings.texturePath;
-			video.load(); 
-			video.play();
-			
-			video.addEventListener("canplaythrough", function videoload(e){
-				var vid = e.target;
-					counter--;
-					
-				var videocanvas = document.createElement( 'canvas' );
-				var videocanvasctx = videocanvas.getContext( '2d' );
+		this.loader.load(settings.texturePath, function(image){
+			var canvas= document.createElement('canvas');
+			var ctx = canvas.getContext('2d');
+				canvas.height = 256;
+				canvas.width = 256;
 
-					// set its size
-					videocanvas.width = 256;
-					videocanvas.height = 256;
+				ctx.fillStyle = "#000000";
+				ctx.fillRect( 0, 0, 256, 256 );
 
-					// draw black rectangle so spheres don't start out transparent
-					videocanvasctx.fillStyle = "#000000";
-					videocanvasctx.fillRect( 0, 0, 256, 256 );
-
-					// add canvas to new texture
-					var spheretexture = new THREE.Texture(videocanvas, THREE.SphericalReflectionMapping);
-
-					// add texture to material that will be wrapped around the sphere
-					var material = new THREE.MeshPhongMaterial( {
+			var sphereTexture = new THREE.Texture(canvas, THREE.SphericalReflectionMapping);
+			var material = new THREE.MeshPhongMaterial( {
 						color: 0xffffff, //the base color of the object, white here
-						ambient: 0xffffff, //ambient color of the object, also white
-						specular: 0x050505, //color for specular highlights, a dark grey here
-						shininess: 50,
-						map: spheretexture //the texture you created from the video
+						ambient: 0xec9daf, //ambient color of the object, also white
+						// specular: 0x43444d, //color for specular highlights, a dark grey here
+						shininess: 15,
+						map:  sphereTexture//the texture you created from the image
 						} );
 					
-					var ball = new Ball(THREE, material, vid, videocanvasctx, self.scene, settings.settings, urls[i]);
-					
-					self.balls.push(ball);
-					window.balls.push(ball);
-					if(counter === 0) self.init();
-					vid.removeEventListener('canplaythrough', videoload);
-				});
+			var ball = new Ball(THREE, material, image, ctx, self.scene, settings.settings, urls[i]);
+			
+			self.balls.push(ball);
+			window.balls.push(ball);
+		});
 	}, this);
+	this.init();
 
 };
 
 App.prototype.init = function(){
 	window.requestAnimationFrame( this.render.bind(this) );
 	window.addEventListener('click', this.rayTrace.bind(this));
+	var self = this
+	window.addEventListener('resize', function(){
+		self.camera.aspect = window.innerWidth / window.innerHeight;
+		self.camera.updateProjectionMatrix();
+		self.renderer.setSize( window.innerWidth, window.innerHeight );
+	});
+
 };
 
 App.prototype.rayTrace = function(event){
@@ -205,6 +197,7 @@ App.prototype.rayTrace = function(event){
 	var intersects = raycaster.intersectObjects(this.scene.children, false);
 	window.open(intersects[0].object.url)
 };
+
 App.prototype.render = function(){
 
 	this.balls.forEach(function(ball){
@@ -219,8 +212,8 @@ App.prototype.render = function(){
 
 	}
 	this.renderer.render( this.scene, this.camera );
-
-	window.requestAnimationFrame(this.render.bind(this));
+	var self = this;
+	window.setTimeout(function(){window.requestAnimationFrame(self.render.bind(self))}, 60);
 };
 
 
