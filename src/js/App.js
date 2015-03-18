@@ -26,7 +26,7 @@ var App = function(){
    this.pointLight = new THREE.PointLight( 0xffffff, 1, 100 );
    this.pointLight.position.set( 50, 50, 50 );
 
-   this.ambientLight = new THREE.AmbientLight( 0xffffff );
+   this.ambientLight = new THREE.AmbientLight( 0xe2cae2 );
    this.scene.add( this.ambientLight );
 
    this.directionalLight = new THREE.DirectionalLight( 0xff99ff, 0.5 );
@@ -45,7 +45,7 @@ var App = function(){
 
 App.prototype.makeWater = function(){
 
-   var waterNormals = new THREE.ImageUtils.loadTexture( '/textures/2.jpg' );
+   var waterNormals = new THREE.ImageUtils.loadTexture( '/textures/terrain.png' );
        waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping; 
 
    this.water = new THREE.Water( this.renderer, this.camera, this.scene, {
@@ -54,10 +54,15 @@ App.prototype.makeWater = function(){
 		waterNormals: waterNormals,
 		alpha: 0.5,
 		sunDirection: this.pointLight.position.normalize(),
-		sunColor: 0xffffff,
-		waterColor: 0xe2cde4,
-		distortionScale: 5
-	} );
+		sunColor: 0xe1c9e1,
+		waterColor: 0xf6eafd,
+		distortionScale: 50,
+	});
+   
+   this.water.sunDirection.x = 4.0;
+   this.water.sunDirection.y = 4.0;
+   this.water.sunDirection.z = 2.0;
+
 
    this.waterPlane = new THREE.Mesh(
 	new THREE.PlaneBufferGeometry( 20000, 20000 ),
@@ -127,13 +132,13 @@ App.prototype.addBalls = function(){
 	
 	var textures = [
 			{texturePath: "/textures/videos/montagedonttellme.jpg", settings: {scale: 0.035, maxz: 1, minz: -1, direction:1, position: {x: 25 , y: 0 , z: 0 }}}, 
-			{texturePath: "/textures/videos/montagefreakudown.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.05, direction:-1, position: {x: 0 , y: 25, z: 5 }}}, 
+			{texturePath: "/textures/videos/montagefreakudown.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.05, direction:1, position: {x: 0 , y: 25, z: 5 }}}, 
 			{texturePath: "/textures/videos/montagegivemeskin.jpg", settings: {scale: 0.035, maxz: 0.5, minz: -0.5, direction:0, position: {x: -20 , y: 0 , z: 0 }}},
 			{texturePath: "/textures/videos/montagegroundunderwater.jpg", settings: {scale: 0.035, maxz: 0.5, minz: -0.5, direction:0, position: {x: -25 , y: 10 , z: 10 }}}, 
 			{texturePath: "/textures/videos/montageillbemyownreflection.jpg", settings: {scale: 0.050, maxz: 0.5, minz: -0.5, direction:0, position: {x: -28, y: 10, z: -10 }}}, 
 			{texturePath: "/textures/videos/montagematchbook.jpg", settings: {scale: 0.040, maxz: -5, minz: 5, direction: 0, position: {x: 5 , y: 35 , z: -7 }}}, 
-			{texturePath: "/textures/videos/montagetwentyone.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction:0, position: {x: 15 , y: 5 , z: 6 }}},
-			{texturePath: "/textures/videos/montageonlygirlintheworld.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction:0, position: {x: 25, y: 15 , z: 16 }}}
+			{texturePath: "/textures/videos/montagetwentyone.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction:1, position: {x: 15 , y: 5 , z: 6 }}},
+			{texturePath: "/textures/videos/montageonlygirlintheworld.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction:0, position: {x: 25, y: 5 , z: 10 }}}
 
 	];
 	
