@@ -34617,9 +34617,12 @@ var App = function(){
    this.scene.add( this.ambientLight );
 
    this.directionalLight = new THREE.DirectionalLight( 0xff99ff, 0.5 );
-   this.directionalLight.position.set( 0, 1, 0 );
+   this.directionalLight.position.set( 10, 5, 0 );
    this.directionalLight.position.normalize();
+   this.directionalLight.shadowDarkness = 1;
    this.scene.add( this.directionalLight );
+
+   window.light = this.directionalLight;
 
    this.loader = new THREE.ImageLoader();
 
@@ -34718,14 +34721,14 @@ App.prototype.addBalls = function(){
 	
 	
 	var textures = [
-			{texturePath: "/textures/videos/montagedonttellme.jpg", settings: {scale: 0.035, maxz: 1, minz: -1, direction:1, position: {x: 25 , y: 0 , z: 0 }}}, 
-			{texturePath: "/textures/videos/montagefreakudown.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.05, direction:1, position: {x: 0 , y: 25, z: 5 }}}, 
-			{texturePath: "/textures/videos/montagegivemeskin.jpg", settings: {scale: 0.035, maxz: 0.5, minz: -0.5, direction:0, position: {x: -20 , y: 0 , z: 0 }}},
-			{texturePath: "/textures/videos/montagegroundunderwater.jpg", settings: {scale: 0.035, maxz: 0.5, minz: -0.5, direction:0, position: {x: -25 , y: 10 , z: 10 }}}, 
-			{texturePath: "/textures/videos/montageillbemyownreflection.jpg", settings: {scale: 0.050, maxz: 0.5, minz: -0.5, direction:0, position: {x: -28, y: 10, z: -10 }}}, 
-			{texturePath: "/textures/videos/montagematchbook.jpg", settings: {scale: 0.040, maxz: -5, minz: 5, direction: 0, position: {x: 5 , y: 35 , z: -7 }}}, 
+			{texturePath: "/textures/videos/montagedonttellme.jpg", settings: {scale: 0.035, maxz: 1, minz: -1, direction:-1, position: {x: 25 , y: 0 , z: 0 }}}, 
+			{texturePath: "/textures/videos/montagefreakudown.jpg", settings: {scale: 0.025, maxz: 4, minz: 3, direction:1, position: {x: 0 , y: 25, z: 5 }}}, 
+			{texturePath: "/textures/videos/montagegivemeskin.jpg", settings: {scale: 0.035, maxz: 1, minz: -1, direction:-1, position: {x: -20 , y: 0 , z: 0 }}},
+			{texturePath: "/textures/videos/montagegroundunderwater.jpg", settings: {scale: 0.035, maxz: 6, minz: 3, direction:1, position: {x: -25 , y: 10 , z: 10 }}}, 
+			{texturePath: "/textures/videos/montageillbemyownreflection.jpg", settings: {scale: 0.050, maxz: -7, minz: -9, direction:-1, position: {x: -28, y: 10, z: -10 }}}, 
+			{texturePath: "/textures/videos/montagematchbook.jpg", settings: {scale: 0.040, maxz: -5, minz: -7, direction: -1, position: {x: 5 , y: 35 , z: -7 }}}, 
 			{texturePath: "/textures/videos/montagetwentyone.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction:1, position: {x: 15 , y: 5 , z: 6 }}},
-			{texturePath: "/textures/videos/montageonlygirlintheworld.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction:0, position: {x: 25, y: 5 , z: 10 }}}
+			{texturePath: "/textures/videos/montageonlygirlintheworld.jpg", settings: {scale: 0.025, maxz: 11, minz: 9, direction:1, position: {x: 25, y: 5 , z: 10 }}}
 
 	];
 	
@@ -34745,8 +34748,9 @@ App.prototype.addBalls = function(){
 			var material = new THREE.MeshPhongMaterial( {
 						color: 0xffffff, //the base color of the object, white here
 						ambient: 0xec9daf, //ambient color of the object, also white
-						// specular: 0x43444d, //color for specular highlights, a dark grey here
-						shininess: 15,
+						diffuse: 0x000000,
+						specular: 0x333333, //color for specular highlights, a dark grey here
+						shininess: 25,
 						map:  sphereTexture//the texture you created from the image
 						} );
 					
@@ -34879,7 +34883,7 @@ Ball.prototype.move = function(){
     this.currentDirection = 1;
   }
  
-  var moveBy = 0.5 * this.scale * this.currentDirection;
+  var moveBy = 2 * this.scale * this.currentDirection;
   this.mesh.position.z += moveBy;
 };
  

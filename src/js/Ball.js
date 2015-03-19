@@ -65,7 +65,7 @@ Ball.prototype.move = function(){
     this.currentDirection = 1;
   }
  
-  var moveBy = 0.5 * this.scale * this.currentDirection;
+  var moveBy = 2 * this.scale * this.currentDirection;
   this.mesh.position.z += moveBy;
 };
  
