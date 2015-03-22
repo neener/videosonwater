@@ -54,7 +54,7 @@ Ball.prototype.render = function(){
     this.ctx.drawImage( this.image, column * 256, row * 256, 256, 256, 0, 0, 256, 256 );
     this.material.map.needsUpdate = true;
 
-    this.counter < 120 ? this.counter++ : this.counter = 0
+    this.counter = this.counter < 120 ? this.counter + 1 : 0;
 };
 
 Ball.prototype.move = function(){

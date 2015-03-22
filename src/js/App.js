@@ -20,6 +20,7 @@ var App = function(){
    this.camera.lookAt(new THREE.Vector3(0,0,0));
 
    this.renderer = new THREE.WebGLRenderer({ antialias: true });
+   this.renderer.shadowMapType = THREE.PCFSoftShadowMap
    this.renderer.setSize( this.width, this.height);
    this.container.appendChild( this.renderer.domElement );
 
@@ -30,13 +31,26 @@ var App = function(){
    this.ambientLight = new THREE.AmbientLight( 0xf6eafd );
    this.scene.add( this.ambientLight );
 
-   this.directionalLight = new THREE.DirectionalLight( 0xd3d3d3, 0.5 );
-   this.directionalLight.position.set( 12, 10, 0 );
-   this.directionalLight.position.normalize();
-   this.directionalLight.shadowDarkness = 1;
-   this.scene.add( this.directionalLight );
+   this.spotLight = new THREE.SpotLight(0xffffff);
+   this.spotLight.position.set( -60, 100, 30 );
+   this.spotLight.castShadow = true;
 
-   window.light = this.directionalLight;
+   this.spotLight.shadowMapWidth = 1024;
+   this.spotLight.shadowMapHeight = 1024;
+
+   this.spotLight.shadowCameraNear = 10;
+   this.spotLight.shadowCameraFar = 3000;
+   this.spotLight.shadowCameraFov = 3000;
+
+   this.spotLight.shadowDarkness = 1;
+
+   this.spotLight.target = new THREE.Object3D(-25,0,-15);
+
+   this.scene.add( this.spotLight );
+
+   window.light = this.spotLight;
+
+   window.THREE = THREE;
 
    this.loader = new THREE.ImageLoader();
 
@@ -131,7 +145,7 @@ App.prototype.makeEnvironment = function(){
 App.prototype.addBalls = function(){
 	this.balls = [];
 
-	var urls = ["http://youtu.be/KGinfh-FDs4", "/freakudown", "givemeskin.mp4", "groundunderwater.mp4", "illbemyownreflection", "matchbook", "twentyone"]
+	var urls = ["http://youtu.be/KGinfh-FDs4", "/freakudown", "givemeskin.mp4", "groundunderwater.mp4", "illbemyownreflection", "matchbook", "twentyone"];
 	
 	
 	var textures = [
@@ -162,9 +176,9 @@ App.prototype.addBalls = function(){
 			var sphereTexture = new THREE.Texture(canvas, THREE.SphericalReflectionMapping);
 			var material = new THREE.MeshPhongMaterial( {
 						color: 0xe7c1e7, //the base color of the object, white here
-						ambient: 0xec9daf, //ambient color of the object, also white
+						ambient: 0x666666, //ambient color of the object, also white
 						diffuse: 0x000000,
-						specular: 0x939393, //color for specular highlights, a dark grey here
+						specular: 0x666666, //color for specular highlights, a dark grey here
 						shininess: 5,
 						shading: THREE.SmoothShading,
 						map: sphereTexture//the texture you created from the image
@@ -184,7 +198,7 @@ App.prototype.addBalls = function(){
 App.prototype.init = function(){
 	window.requestAnimationFrame( this.render.bind(this) );
 	window.addEventListener('click', this.rayTrace.bind(this));
-	var self = this
+	var self = this;
 	window.addEventListener('resize', function(){
 		self.camera.aspect = window.innerWidth / window.innerHeight;
 		self.camera.updateProjectionMatrix();
@@ -208,7 +222,7 @@ App.prototype.rayTrace = function(event){
 	raycaster.set(camera.position, vector.sub(this.camera.position).normalize());
 	
 	var intersects = raycaster.intersectObjects(this.scene.children, false);
-	window.open(intersects[0].object.url)
+	window.open(intersects[0].object.url);
 };
 
 App.prototype.render = function(){
@@ -226,7 +240,7 @@ App.prototype.render = function(){
 	}
 	this.renderer.render( this.scene, this.camera );
 	var self = this;
-	window.setTimeout(function(){window.requestAnimationFrame(self.render.bind(self))}, 60);
+	window.setTimeout(function(){window.requestAnimationFrame(self.render.bind(self));}, 60);
 };
 
 
