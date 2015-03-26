@@ -223,6 +223,18 @@ App.prototype.rayTrace = function(event){
 	
 	var intersects = raycaster.intersectObjects(this.scene.children, false);
 	window.open(intersects[0].object.url);
+
+	function openModal(url){
+		var modal = document.createElement('div');
+			modal.setAttribute('class', 'video-modal');
+			modal.innerHtml = '<iframe width="560" height="315" src="' + url + '" frameborder="0" allowfullscreen></iframe>';
+			document.body.appendChild(modal);
+	};
+
+	function closeModal(){
+		var modal = document.querySelector('.video-modal');
+			modal.parentNode.removeChild(modal);
+	};
 };
 
 App.prototype.render = function(){
