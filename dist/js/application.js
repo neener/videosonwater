@@ -34607,7 +34607,7 @@ var App = function(){
    this.camera.lookAt(new THREE.Vector3(0,0,0));
 
    this.renderer = new THREE.WebGLRenderer({ antialias: true });
-   this.renderer.shadowMapType = THREE.PCFSoftShadowMap
+   this.renderer.shadowMapType = THREE.PCFSoftShadowMap;
    this.renderer.setSize( this.width, this.height);
    this.container.appendChild( this.renderer.domElement );
 
@@ -34732,7 +34732,7 @@ App.prototype.makeEnvironment = function(){
 App.prototype.addBalls = function(){
 	this.balls = [];
 
-	var urls = ["http://youtu.be/KGinfh-FDs4", "/freakudown", "givemeskin.mp4", "groundunderwater.mp4", "illbemyownreflection", "matchbook", "twentyone"];
+	var urls = ["https://youtu.be/xR8FivNkypw", "https://vimeo.com/76532624", "https://youtu.be/TbZmVfs7MiM", "https://youtu.be/tp-XIvCAwCk", "https://vimeo.com/109525624", "https://vimeo.com/23831828", "https://youtu.be/KGinfh-FDs4", "https://youtu.be/KGinfh-FDs4"];
 	
 	
 	var textures = [
@@ -34741,7 +34741,6 @@ App.prototype.addBalls = function(){
 			{texturePath: "/textures/videos/montagegivemeskin.jpg", settings: {scale: 0.025, maxz: 4, minz: 3, direction:1, position: {x: -20 , y: 20 , z: 4 }}},
 			{texturePath: "/textures/videos/montageillbemyownreflection.jpg", settings: {scale: 0.040, maxz: -7, minz: -9, direction:1, position: {x: -18, y: 7, z: -10 }}}, 
 			{texturePath: "/textures/videos/montagematchbook.jpg", settings: {scale: 0.037, maxz: -6, minz: -8, direction: 1, position: {x: 5 , y: 35 , z: -7 }}}, 
-
 			{texturePath: "/textures/videos/montagetwentyone.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction:1, position: {x: 15 , y: 5 , z:-2 }}},
 			{texturePath: "/textures/videos/montagedonttellme.jpg", settings: {scale: 0.035, maxz: 1, minz: -1, direction:1, position: {x: 25 , y: 0 , z: 0 }}}, 
 			{texturePath: "/textures/videos/montageonlygirlintheworld.jpg", settings: {scale: 0.025, maxz: 11, minz: 9, direction:1, position: {x: 20, y: 10 , z: 10 }}}
@@ -34816,12 +34815,12 @@ App.prototype.rayTrace = function(event){
 			modal.setAttribute('class', 'video-modal');
 			modal.innerHtml = '<iframe width="560" height="315" src="' + url + '" frameborder="0" allowfullscreen></iframe>';
 			document.body.appendChild(modal);
-	};
+	}
 
 	function closeModal(){
 		var modal = document.querySelector('.video-modal');
 			modal.parentNode.removeChild(modal);
-	};
+	}
 };
 
 App.prototype.render = function(){
