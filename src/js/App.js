@@ -221,19 +221,20 @@ App.prototype.rayTrace = function(event){
 	raycaster.set(camera.position, vector.sub(this.camera.position).normalize());
 	
 	var intersects = raycaster.intersectObjects(this.scene.children, false);
-	window.open(intersects[0].object.url);
+	this.openModal(intersects[0].object.url);
+};
 
-	function openModal(url){
+App.prototype.openModal = function(url){
 		var modal = document.createElement('div');
-			modal.setAttribute('class', 'video-modal');
-			modal.innerHtml = '<iframe width="560" height="315" src="' + url + '" frameborder="0" allowfullscreen></iframe>';
-			document.body.appendChild(modal);
-	}
+		    modal.setAttribute('class', 'video-modal');
+		    modal.innerHtml = '<div id="modal-close">CLOSE</div><iframe width="560" height="315" src="' + url + '" frameborder="0" allowfullscreen></iframe>';
+		    document.body.appendChild(modal);
+		    document.getElementById('modal-close').addEventListener('click', this.closeModal.bind(this));
+};
 
-	function closeModal(){
+App.prototype.closeModal = function(url){
 		var modal = document.querySelector('.video-modal');
-			modal.parentNode.removeChild(modal);
-	}
+		    modal.parentNode.removeChild(modal);
 };
 
 App.prototype.render = function(){
