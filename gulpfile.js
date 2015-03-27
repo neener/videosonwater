@@ -39,9 +39,10 @@ gulp.task('lint', function() {
 });
 
 gulp.task('html', function(){
-  return gulp.src('./src/*.html')
+  return gulp.src(['./src/*.html','./src/*.css'] )
     .pipe( gulp.dest('./dist') );
 });
+
 
 gulp.task('textures', function(){
   return gulp.src('./src/textures/**/*')
