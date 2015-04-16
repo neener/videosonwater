@@ -34615,27 +34615,91 @@ var App = function(){
    this.pointLight = new THREE.PointLight( 0xffffff, 1, 100 );
    this.pointLight.position.set( 50, 50, 50 );
 
-   this.ambientLight = new THREE.AmbientLight( 0xf6eafd );
+   this.ambientLight = new THREE.AmbientLight( 0xcccccc);
    this.scene.add( this.ambientLight );
 
-   this.spotLight = new THREE.SpotLight(0xffffff);
-   this.spotLight.position.set( -60, 100, 30 );
-   this.spotLight.castShadow = true;
 
-   this.spotLight.shadowMapWidth = 1024;
-   this.spotLight.shadowMapHeight = 1024;
 
-   this.spotLight.shadowCameraNear = 10;
-   this.spotLight.shadowCameraFar = 3000;
-   this.spotLight.shadowCameraFov = 3000;
+   this.spotLightTop = new THREE.SpotLight(0xffffff, 0.1);
+   this.spotLightTop.position.set( 0, 10, 850 );
+   this.spotLightTop.castShadow = true;
 
-   this.spotLight.shadowDarkness = 1;
+   this.spotLightTop.shadowMapWidth = 1024;
+   this.spotLightTop.shadowMapHeight = 1024;
 
-   this.spotLight.target = new THREE.Object3D(-25,0,-15);
+   this.spotLightTop.shadowCameraNear = 10;
+   this.spotLightTop.shadowCameraFar = 5000;
+   this.spotLightTop.shadowCameraFov = 3000;
 
-   this.scene.add( this.spotLight );
+   this.spotLightTop.shadowDarkness = 1;
 
-   window.light = this.spotLight;
+   this.spotLightTop.target = new THREE.Object3D(0,30,0);
+
+   this.scene.add( this.spotLightTop );
+
+   window.lightTop = this.spotLightTop;
+
+
+
+   this.spotLightRight = new THREE.SpotLight(0xffffff, 0.1);
+   this.spotLightRight.position.set( 0, 10, 850 );
+   this.spotLightRight.castShadow = true;
+
+   this.spotLightRight.shadowMapWidth = 1024;
+   this.spotLightRight.shadowMapHeight = 1024;
+
+   this.spotLightRight.shadowCameraNear = 10;
+   this.spotLightRight.shadowCameraFar = 5000;
+   this.spotLightRight.shadowCameraFov = 3000;
+
+   this.spotLightRight.shadowDarkness = 1;
+
+   this.spotLightRight.target = new THREE.Object3D(0,30,0);
+
+   this.scene.add( this.spotLightRight );
+
+   window.lightRight = this.spotLightRight;
+
+   
+   this.spotLightBottom = new THREE.SpotLight(0xffffff, 0.1);
+   this.spotLightBottom.position.set( 0, 5, -850 );
+   this.spotLightBottom.castShadow = true;
+
+   this.spotLightBottom.shadowMapWidth = 1024;
+   this.spotLightBottom.shadowMapHeight = 1024;
+
+   this.spotLightBottom.shadowCameraNear = 500;
+   this.spotLightBottom.shadowCameraFar = 10000;
+   this.spotLightBottom.shadowCameraFov = 30;
+
+   this.spotLightBottom.shadowDarkness = 1;
+
+   this.spotLightBottom.target = new THREE.Object3D(0,20,0);
+
+   this.scene.add( this.spotLightBottom );
+
+   window.lightBottom = this.spotLightBottom;
+
+
+   this.spotLightLeft = new THREE.SpotLight(0xffffff, 0.1);
+   this.spotLightLeft.position.set( 0, -10, -850 );
+   this.spotLightLeft.castShadow = true;
+
+   this.spotLightLeft.shadowMapWidth = 1024;
+   this.spotLightLeft.shadowMapHeight = 1024;
+
+   this.spotLightLeft.shadowCameraNear = 10;
+   this.spotLightLeft.shadowCameraFar = 5000;
+   this.spotLightLeft.shadowCameraFov = 3000;
+
+   this.spotLightLeft.shadowDarkness = 1;
+
+   this.spotLightLeft.target = new THREE.Object3D(0,30,0);
+
+   this.scene.add( this.spotLightLeft );
+
+   window.lightLeft = this.spotLightLeft;
+
 
    window.THREE = THREE;
 
@@ -34659,8 +34723,8 @@ App.prototype.makeWater = function(){
 		waterNormals: waterNormals,
 		alpha: 0.5,
 		sunDirection: this.pointLight.position.normalize(),
-		sunColor: 0xe1c9e1,
-		waterColor: 0xf6eafd,
+		sunColor: 0xcccccc,
+		waterColor: 0xffccff,
 		distortionScale: 50,
 	});
    
@@ -34732,18 +34796,18 @@ App.prototype.makeEnvironment = function(){
 App.prototype.addBalls = function(){
 	this.balls = [];
 
-	var urls = ["https://youtu.be/xR8FivNkypw", "https://vimeo.com/76532624", "https://youtu.be/TbZmVfs7MiM", "https://youtu.be/tp-XIvCAwCk", "https://vimeo.com/109525624", "https://vimeo.com/23831828", "https://youtu.be/KGinfh-FDs4", "https://youtu.be/KGinfh-FDs4"];
+	var urls = ["https://www.youtube.com/embed/xR8FivNkypw", "https://www.youtube.com/embed/P0d70ExQAdY", "https://www.youtube.com/embed/TbZmVfs7MiM", "https://www.youtube.com/embed/tp-XIvCAwCk", "https://www.youtube.com/embed/iKdyVfT26eo", "https://www.youtube.com/embed/iMrZT8z_avg", "https://www.youtube.com/embed/KGinfh-FDs4", "https://www.youtube.com/embed/KGinfh-FDs4"];
 	
 	
 	var textures = [
-			{texturePath: "/textures/videos/montagegroundunderwater.jpg", settings: {scale: 0.035, maxz: 9, minz: 8, direction:1, position: {x: 7 , y: 20 , z: 10 }}}, 
-			{texturePath: "/textures/videos/montagefreakudown.jpg", settings: {scale: 0.025, maxz: 4, minz: 3, direction:1, position: {x: -4 , y: 25, z: 8 }}}, 
-			{texturePath: "/textures/videos/montagegivemeskin.jpg", settings: {scale: 0.025, maxz: 4, minz: 3, direction:1, position: {x: -20 , y: 20 , z: 4 }}},
+			{texturePath: "/textures/videos/montagegroundunderwater.jpg", settings: {scale: 0.035, maxz: 13, minz: 10, direction:1, position: {x: 7 , y: 20 , z: 14 }}}, 
+			{texturePath: "/textures/videos/montagefreakudown.jpg", settings: {scale: 0.025, maxz: 12, minz: 11, direction:1, position: {x: -5 , y: 15, z: 8 }}}, 
+			{texturePath: "/textures/videos/montagegivemeskin.jpg", settings: {scale: 0.025, maxz: 11, minz: 9, direction:1, position: {x: -15 , y: 20 , z: 10 }}},
 			{texturePath: "/textures/videos/montageillbemyownreflection.jpg", settings: {scale: 0.040, maxz: -7, minz: -9, direction:1, position: {x: -18, y: 7, z: -10 }}}, 
 			{texturePath: "/textures/videos/montagematchbook.jpg", settings: {scale: 0.037, maxz: -6, minz: -8, direction: 1, position: {x: 5 , y: 35 , z: -7 }}}, 
-			{texturePath: "/textures/videos/montagetwentyone.jpg", settings: {scale: 0.025, maxz: 0.5, minz: -0.5, direction:1, position: {x: 15 , y: 5 , z:-2 }}},
-			{texturePath: "/textures/videos/montagedonttellme.jpg", settings: {scale: 0.035, maxz: 1, minz: -1, direction:1, position: {x: 25 , y: 0 , z: 0 }}}, 
-			{texturePath: "/textures/videos/montageonlygirlintheworld.jpg", settings: {scale: 0.025, maxz: 11, minz: 9, direction:1, position: {x: 20, y: 10 , z: 10 }}}
+			{texturePath: "/textures/videos/montagetwentyone.jpg", settings: {scale: 0.035, maxz: -7, minz: -9, direction:1, position: {x: 15, y: 7, z: -10 }}},
+			{texturePath: "/textures/videos/montagedonttellme.jpg", settings: {scale: 0.025,  maxz: -7, minz: -9, direction:1, position: {x: 25 , y: 7, z: -9 }}}, 
+			{texturePath: "/textures/videos/montageonlygirlintheworld.jpg", settings: {scale: 0.025, maxz: 11, minz: 9, direction:1, position: {x: 20, y: 10, z: 10 }}}
 
 	];
 	
@@ -34761,16 +34825,20 @@ App.prototype.addBalls = function(){
 
 			var sphereTexture = new THREE.Texture(canvas, THREE.SphericalReflectionMapping);
 			var material = new THREE.MeshPhongMaterial( {
-						color: 0xe7c1e7, //the base color of the object, white here
-						ambient: 0x666666, //ambient color of the object, also white
+						color: 0x666666, //the base color of the object, white here
+						opacity: 0.4,
+						transparent: true,
+						ambient: 0xffffff, //ambient color of the object, also white
 						diffuse: 0x000000,
-						specular: 0x666666, //color for specular highlights, a dark grey here
-						shininess: 5,
+						specular: 0xcccccc, //color for specular highlights, a dark grey here
+						shininess: 100,
+						metal: true,
 						shading: THREE.SmoothShading,
 						map: sphereTexture//the texture you created from the image
-						} );
+						});
 		
-					
+			
+
 			var ball = new Ball(THREE, material, image, ctx, self.scene, settings.settings, urls[i]);
 			
 			self.balls.push(ball);
@@ -34783,7 +34851,7 @@ App.prototype.addBalls = function(){
 
 App.prototype.init = function(){
 	window.requestAnimationFrame( this.render.bind(this) );
-	window.addEventListener('click', this.rayTrace.bind(this));
+	this.renderer.domElement.addEventListener('click', this.rayTrace.bind(this));
 	var self = this;
 	window.addEventListener('resize', function(){
 		self.camera.aspect = window.innerWidth / window.innerHeight;
@@ -34808,19 +34876,20 @@ App.prototype.rayTrace = function(event){
 	raycaster.set(camera.position, vector.sub(this.camera.position).normalize());
 	
 	var intersects = raycaster.intersectObjects(this.scene.children, false);
-	window.open(intersects[0].object.url);
+	this.openModal(intersects[0].object.url);
+};
 
-	function openModal(url){
+App.prototype.openModal = function(url){
 		var modal = document.createElement('div');
-			modal.setAttribute('class', 'video-modal');
-			modal.innerHtml = '<iframe width="560" height="315" src="' + url + '" frameborder="0" allowfullscreen></iframe>';
-			document.body.appendChild(modal);
-	}
+		    modal.setAttribute('id', 'video-modal');
+		    document.querySelectorAll('body')[0].appendChild(modal);
+		    modal.innerHTML = '<div id="modal-close">CLOSE</div><iframe width="560" height="315" src="' + url + '?autoplay=1&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen></iframe>';
+		    document.getElementById('modal-close').addEventListener('click', this.closeModal.bind(this));
+};
 
-	function closeModal(){
-		var modal = document.querySelector('.video-modal');
-			modal.parentNode.removeChild(modal);
-	}
+App.prototype.closeModal = function(url){
+		var modal = document.getElementById('video-modal');
+		    document.body.removeChild(modal);
 };
 
 App.prototype.render = function(){
@@ -34844,6 +34913,7 @@ App.prototype.render = function(){
 
 
 module.exports = App;
+
 },{"./Ball.js":5,"./MirrorLoader.js":6,"./WaterLoader.js":7,"three":3}],5:[function(require,module,exports){
  var Ball = function(THREE, material, image, ctx, scene, settings, url){
     
