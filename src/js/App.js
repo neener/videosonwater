@@ -267,6 +267,9 @@ App.prototype.init = function(){
 	this.renderer.domElement.addEventListener('click', this.rayTrace.bind(this));
 	var self = this;
 	window.addEventListener('resize', function(){
+		if(window.innerWidth < 840) self.camera.position.set( 10, 120, 0 );
+		if(window.innerWidth < 530) self.camera.position.set( 20, 140, 0 );
+		if(window.innerWidth >= 840) self.camera.position.set( 10, 65, 0 );
 		self.camera.aspect = window.innerWidth / window.innerHeight;
 		self.camera.updateProjectionMatrix();
 		self.renderer.setSize( window.innerWidth, window.innerHeight );
@@ -289,6 +292,8 @@ App.prototype.rayTrace = function(event){
 	raycaster.set(camera.position, vector.sub(this.camera.position).normalize());
 	
 	var intersects = raycaster.intersectObjects(this.scene.children, false);
+
+	if(!intersects[0].object.url) return;
 	this.openModal(intersects[0].object.url);
 };
 

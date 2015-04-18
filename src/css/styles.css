@@ -61,10 +61,10 @@ div#logo{
 }
 
 img{
-	position:fixed;
-	width:65%;
-	padding: 0;
-	margin-left: 19em;
-	margin-top: 21em;
+	position:absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width:70%;
+	left:15%;
 	z-index:7;
 }
