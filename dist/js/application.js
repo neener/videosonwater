@@ -1,12 +1,17 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var App = require('./App.js');
+var MobileApp = require('./MobileApp.js')
 var domReady = require('domready');
 
 domReady(function(){
-    var app = new App();
-
+	if (window.innerWidth >= 768){
+    	var app = new App();
+	}
+	else{
+		var app = new MobileApp();
+	}
 });
-},{"./App.js":4,"domready":2}],2:[function(require,module,exports){
+},{"./App.js":4,"./MobileApp.js":7,"domready":2}],2:[function(require,module,exports){
 /*!
   * domready (c) Dustin Diaz 2014 - License MIT
   */
@@ -34796,7 +34801,7 @@ App.prototype.makeEnvironment = function(){
 App.prototype.addBalls = function(){
 	this.balls = [];
 
-	var urls = ["https://www.youtube.com/embed/xR8FivNkypw", "https://www.youtube.com/embed/P0d70ExQAdY", "https://www.youtube.com/embed/TbZmVfs7MiM", "https://www.youtube.com/embed/tp-XIvCAwCk", "https://www.youtube.com/embed/iKdyVfT26eo", "https://www.youtube.com/embed/iMrZT8z_avg", "https://www.youtube.com/embed/KGinfh-FDs4", "https://www.youtube.com/embed/KGinfh-FDs4"];
+	var urls = ["https://www.youtube.com/embed/xR8FivNkypw", "https://www.youtube.com/embed/P0d70ExQAdY", "https://www.youtube.com/embed/TbZmVfs7MiM", "https://www.youtube.com/embed/tp-XIvCAwCk", "https://www.youtube.com/embed/iKdyVfT26eo", "https://www.youtube.com/embed/iMrZT8z_avg", "https://www.youtube.com/embed/KGinfh-FDs4", "https://www.youtube.com/embed/BOo2Qx_SWp0"];
 	
 	
 	var textures = [
@@ -34919,7 +34924,7 @@ App.prototype.render = function(){
 
 module.exports = App;
 
-},{"./Ball.js":5,"./MirrorLoader.js":6,"./WaterLoader.js":7,"three":3}],5:[function(require,module,exports){
+},{"./Ball.js":5,"./MirrorLoader.js":6,"./WaterLoader.js":8,"three":3}],5:[function(require,module,exports){
  var Ball = function(THREE, material, image, ctx, scene, settings, url){
     
     this.image = image;
@@ -35298,6 +35303,36 @@ function MirrorLoader(THREE){
 
 module.exports = MirrorLoader;
 },{}],7:[function(require,module,exports){
+var MobileApp = function (){
+	 this.urls = ["https://www.youtube.com/embed/xR8FivNkypw", "https://www.youtube.com/embed/P0d70ExQAdY", "https://www.youtube.com/embed/TbZmVfs7MiM", "https://www.youtube.com/embed/tp-XIvCAwCk", "https://www.youtube.com/embed/iKdyVfT26eo", "https://www.youtube.com/embed/iMrZT8z_avg", "https://www.youtube.com/embed/KGinfh-FDs4", "https://www.youtube.com/embed/BOo2Qx_SWp0"];
+	 this.images = ["/textures/mobile/groundunderwater.jpg", "/textures/mobile/groundunderwater.jpg", "/textures/mobile/groundunderwater.jpg", "/textures/mobile/groundunderwater.jpg", "/textures/mobile/groundunderwater.jpg", "/textures/mobile/groundunderwater.jpg", "/textures/mobile/groundunderwater.jpg", "/textures/mobile/groundunderwater.jpg"];
+	 for (var i = 0; i < this.urls.length; i++){
+	 	// make a div element
+	 	var link = document.createElement('a');
+	 	link.href = this.urls[i];
+	 	var div = document.createElement('div');
+	 	// set its heigth and width so its a square
+	 	div.setAttribute("style", "background-image: url(" + this.images[i] + ");")
+	 	// set that div to have that class
+	 	div.setAttribute("class", "ball");
+	 	// set its style attribute to use the appropriate image as a background image
+	 	// set up css class that makes the div a circle
+
+	 	// use class to give it absolute positioning
+
+	 	// give it top and left value you want it to start with
+
+	 	// add the div to the body element
+	 	document.body.appendChild(link);
+	 	link.appendChild(div);
+	 	// call animate function that moves 
+	 	//  animateBall (div element, minimum y, max y)
+	 }
+
+}
+
+module.exports = MobileApp
+},{}],8:[function(require,module,exports){
 /**
  * 
  *@author Mr&Mrs / http://webgl.no/index.html
