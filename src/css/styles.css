@@ -30,6 +30,179 @@
 	}
 }
 
+@-webkit-keyframes ballTwo{
+	0%{
+		top: 55%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@-moz-keyframes ballTwo{
+	0%{
+		top: 55%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@keyframes ballTwo{
+	0%{
+		top: 55%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+
+@-webkit-keyframes ballThree{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@-moz-keyframes ballThree{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@keyframes ballThree{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+
+@-webkit-keyframes ballFour{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@-moz-keyframes ballFour{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@keyframes ballFour{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+
+@-webkit-keyframes ballFive{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@-moz-keyframes ballFive{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@keyframes ballFive{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+
+@-webkit-keyframes ballSix{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@-moz-keyframes ballSix{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@keyframes ballSix{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@-webkit-keyframes ballSeven{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@-moz-keyframes ballSeven{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@keyframes ballSeven{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@-webkit-keyframes ballEight{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@-moz-keyframes ballEight{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+@keyframes ballEight{
+	0%{
+		top: 15%;
+	}
+	100%{
+		top: 85%;
+	}
+}
+
 body{
 	position: absolute;
 	top: 0;
@@ -77,6 +250,69 @@ div#logo{
 	-webkit-animation: ballOne 10s infinite alternate;
 	animation: ballOne 10s infinite alternate;
 }
+.ball:nth-of-type(2){
+	left: 4%;
+	width:50px;
+	height: 50px;
+	-moz-animation: ballTwo 10s infinite alternate;
+	-webkit-animation: ballTwo 10s infinite alternate;
+	animation: ballTwo 10s infinite alternate;
+}
+.ball:nth-of-type(3){
+	left: 6%;
+	width:50px;
+	height: 50px;
+	/* sets animation of ball one */
+	-moz-animation: ballThree 10s infinite alternate;
+	-webkit-animation: ballThree 10s infinite alternate;
+	animation: ballThree 10s infinite alternate;
+}
+.ball:nth-of-type(4){
+	left: 8%;
+	width:50px;
+	height: 50px;
+	/* sets animation of ball one */
+	-moz-animation: ballFour 10s infinite alternate;
+	-webkit-animation: ballFour 10s infinite alternate;
+	animation: ballFour 10s infinite alternate;
+}
+.ball:nth-of-type(5){
+	left: 10%;
+	width:50px;
+	height: 50px;
+	/* sets animation of ball one */
+	-moz-animation: ballFive 10s infinite alternate;
+	-webkit-animation: ballFive 10s infinite alternate;
+	animation: ballFive 10s infinite alternate;
+}
+.ball:nth-of-type(6){
+	left: 12%;
+	width:50px;
+	height: 50px;
+	/* sets animation of ball one */
+	-moz-animation: ballSix 10s infinite alternate;
+	-webkit-animation: ballSix 10s infinite alternate;
+	animation: ballSix 10s infinite alternate;
+}
+.ball:nth-of-type(7){
+	left: 14%;
+	width:50px;
+	height: 50px;
+	/* sets animation of ball one */
+	-moz-animation: ballSeven 10s infinite alternate;
+	-webkit-animation: ballSeven 10s infinite alternate;
+	animation: ballSeven 10s infinite alternate;
+}
+.ball:nth-of-type(8){
+	left: 15%;
+	width:50px;
+	height: 50px;
+	/* sets animation of ball one */
+	-moz-animation: ballEight 10s infinite alternate;
+	-webkit-animation: ballEight 10s infinite alternate;
+	animation: ballEight 10s infinite alternate;
+}
+
 
 @media screen and (min-width: 768px){
 	body{
