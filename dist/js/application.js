@@ -38,13 +38,13 @@ domReady(function(){
   })
 
   return function (fn) {
-    loaded ? fn() : fns.push(fn)
+    loaded ? setTimeout(fn, 0) : fns.push(fn)
   }
 
 });
 
 },{}],3:[function(require,module,exports){
-// File:src/Three.js
+var self = self || {};// File:src/Three.js
 
 /**
  * @author mrdoob / http://mrdoob.com/
@@ -34589,6 +34589,20 @@ THREE.MorphBlendMesh.prototype.update = function ( delta ) {
 
 };
 
+
+// Export the THREE object for **Node.js**, with
+// backwards-compatibility for the old `require()` API. If we're in
+// the browser, add `_` as a global object via a string identifier,
+// for Closure Compiler "advanced" mode.
+if (typeof exports !== 'undefined') {
+  if (typeof module !== 'undefined' && module.exports) {
+    exports = module.exports = THREE;
+  }
+  exports.THREE = THREE;
+} else {
+  this['THREE'] = THREE;
+}
+
 },{}],4:[function(require,module,exports){
 var THREE = require('three');
 require('./MirrorLoader.js')(THREE);
@@ -35311,7 +35325,7 @@ var MobileApp = function (){
 	 	link.href = this.urls[i];
 	 	var div = document.createElement('div');
 	 	div.setAttribute("style", "background-image: url(" + this.images[i] + ");")
-	 	div.setAttribute("class", "ball");
+	 	div.setAttribute("class", "ball ball" + (i + 1));
 	 	document.body.appendChild(link);
 	 	link.appendChild(div);
 	 }

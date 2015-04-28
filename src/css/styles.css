@@ -241,7 +241,7 @@ div#logo{
 	box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.05), inset 0px -5px 15px 0px rgba(0,0,0,0.5);
 }
 
-.ball:nth-of-type(1){
+body .ball1{
 	left: 2%;
 	width:50px;
 	height: 50px;
@@ -250,7 +250,7 @@ div#logo{
 	-webkit-animation: ballOne 10s infinite alternate;
 	animation: ballOne 10s infinite alternate;
 }
-.ball:nth-of-type(2){
+body .ball2{
 	left: 4%;
 	width:50px;
 	height: 50px;
@@ -258,7 +258,7 @@ div#logo{
 	-webkit-animation: ballTwo 10s infinite alternate;
 	animation: ballTwo 10s infinite alternate;
 }
-.ball:nth-of-type(3){
+body .ball3{
 	left: 6%;
 	width:50px;
 	height: 50px;
@@ -267,7 +267,7 @@ div#logo{
 	-webkit-animation: ballThree 10s infinite alternate;
 	animation: ballThree 10s infinite alternate;
 }
-.ball:nth-of-type(4){
+body .ball4{
 	left: 8%;
 	width:50px;
 	height: 50px;
@@ -276,7 +276,7 @@ div#logo{
 	-webkit-animation: ballFour 10s infinite alternate;
 	animation: ballFour 10s infinite alternate;
 }
-.ball:nth-of-type(5){
+body .ball5{
 	left: 10%;
 	width:50px;
 	height: 50px;
@@ -285,7 +285,7 @@ div#logo{
 	-webkit-animation: ballFive 10s infinite alternate;
 	animation: ballFive 10s infinite alternate;
 }
-.ball:nth-of-type(6){
+body .ball6{
 	left: 12%;
 	width:50px;
 	height: 50px;
@@ -294,7 +294,7 @@ div#logo{
 	-webkit-animation: ballSix 10s infinite alternate;
 	animation: ballSix 10s infinite alternate;
 }
-.ball:nth-of-type(7){
+body .ball7{
 	left: 14%;
 	width:50px;
 	height: 50px;
@@ -303,7 +303,7 @@ div#logo{
 	-webkit-animation: ballSeven 10s infinite alternate;
 	animation: ballSeven 10s infinite alternate;
 }
-.ball:nth-of-type(8){
+body .ball8{
 	left: 15%;
 	width:50px;
 	height: 50px;
