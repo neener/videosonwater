@@ -2,204 +2,204 @@
 @-webkit-keyframes ballOne{
 	/* at the beginning of the animation, ball one will have these styles  */
 	0%{
-		top: 15%;
+		top: 20%;
 	}
 	/* at the end of the animation, ball one will have these styles  */
 	100%{
-		top: 85%;
+		top: 38%;
 	}
 }
 @-moz-keyframes ballOne{
 	/* at the beginning of the animation, ball one will have these styles  */
 	0%{
-		top: 15%;
+		top: 20%;
 	}
 	/* at the end of the animation, ball one will have these styles  */
 	100%{
-		top: 85%;
+		top: 38%;
 	}
 }
 @keyframes ballOne{
 	/* at the beginning of the animation, ball one will have these styles  */
 	0%{
-		top: 15%;
+		top: 20%;
 	}
 	/* at the end of the animation, ball one will have these styles  */
 	100%{
-		top: 85%;
+		top: 38%;
 	}
 }
 
 @-webkit-keyframes ballTwo{
 	0%{
-		top: 55%;
+		top: 20%;
 	}
 	100%{
-		top: 85%;
+		top: 35%;
 	}
 }
 @-moz-keyframes ballTwo{
 	0%{
-		top: 55%;
+		top: 20%;
 	}
 	100%{
-		top: 85%;
+		top: 35%;
 	}
 }
 @keyframes ballTwo{
 	0%{
-		top: 55%;
+		top: 20%;
 	}
 	100%{
-		top: 85%;
+		top: 35%;
 	}
 }
 
 @-webkit-keyframes ballThree{
 	0%{
-		top: 15%;
+		top: 25%;
 	}
 	100%{
-		top: 85%;
+		top: 38%;
 	}
 }
 @-moz-keyframes ballThree{
 	0%{
-		top: 15%;
+		top: 25%;
 	}
 	100%{
-		top: 85%;
+		top: 38%;
 	}
 }
 @keyframes ballThree{
 	0%{
-		top: 15%;
+		top: 25%;
 	}
 	100%{
-		top: 85%;
+		top: 38%;
 	}
 }
 
 @-webkit-keyframes ballFour{
 	0%{
-		top: 15%;
+		top: 25%;
 	}
 	100%{
-		top: 85%;
+		top: 35%;
 	}
 }
 @-moz-keyframes ballFour{
 	0%{
-		top: 15%;
+		top: 25%;
 	}
 	100%{
-		top: 85%;
+		top: 35%;
 	}
 }
 @keyframes ballFour{
 	0%{
-		top: 15%;
+		top: 25%;
 	}
 	100%{
-		top: 85%;
+		top: 35%;
 	}
 }
 
 @-webkit-keyframes ballFive{
 	0%{
-		top: 15%;
+		top: 45%;
 	}
 	100%{
-		top: 85%;
+		top: 60%;
 	}
 }
 @-moz-keyframes ballFive{
 	0%{
-		top: 15%;
+		top: 45%;
 	}
 	100%{
-		top: 85%;
+		top: 60%;
 	}
 }
 @keyframes ballFive{
 	0%{
-		top: 15%;
+		top: 45%;
 	}
 	100%{
-		top: 85%;
+		top: 60%;
 	}
 }
 
 @-webkit-keyframes ballSix{
 	0%{
-		top: 15%;
+		top: 45%;
 	}
 	100%{
-		top: 85%;
+		top: 60%;
 	}
 }
 @-moz-keyframes ballSix{
 	0%{
-		top: 15%;
+		top: 45%;
 	}
 	100%{
-		top: 85%;
+		top: 60%;
 	}
 }
 @keyframes ballSix{
 	0%{
-		top: 15%;
+		top: 45%;
 	}
 	100%{
-		top: 85%;
+		top: 60%;
 	}
 }
 @-webkit-keyframes ballSeven{
 	0%{
-		top: 15%;
+		top: 45%;
 	}
 	100%{
-		top: 85%;
+		top: 60%;
 	}
 }
 @-moz-keyframes ballSeven{
 	0%{
-		top: 15%;
+		top: 45%;
 	}
 	100%{
-		top: 85%;
+		top: 60%;
 	}
 }
 @keyframes ballSeven{
 	0%{
-		top: 15%;
+		top: 45%;
 	}
 	100%{
-		top: 85%;
+		top: 60%;
 	}
 }
 @-webkit-keyframes ballEight{
 	0%{
-		top: 15%;
+		top: 45%;
 	}
 	100%{
-		top: 85%;
+		top: 60%;
 	}
 }
 @-moz-keyframes ballEight{
 	0%{
-		top: 15%;
+		top: 45%;
 	}
 	100%{
-		top: 85%;
+		top: 60%;
 	}
 }
 @keyframes ballEight{
 	0%{
-		top: 15%;
+		top: 45%;
 	}
 	100%{
-		top: 85%;
+		top: 60%;
 	}
 }
 
@@ -230,6 +230,15 @@ div#logo{
 	z-index:7;
 }
 
+	img.email{
+		width: 11%;
+		position: fixed;
+		right: 1%;
+		bottom: 1%;
+		z-index: 8;
+
+	}
+
 .ball{
 	border:0px solid transparent;
 	border-radius: 50%;
@@ -238,79 +247,87 @@ div#logo{
 	left:10%;
 	background-position: center center;
 	background-size: cover;
-	box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.05), inset 0px -5px 15px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.20), inset 0px -5px 15px 0px rgba(0,0,0,0.5);
 }
 
 body .ball1{
-	left: 2%;
-	width:50px;
-	height: 50px;
+	left: 38%;
+	width:80px;
+	height: 80px;
+	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballOne 10s infinite alternate;
-	-webkit-animation: ballOne 10s infinite alternate;
-	animation: ballOne 10s infinite alternate;
+	-moz-animation: ballOne 2s infinite alternate;
+	-webkit-animation: ballOne 2s infinite alternate;
+	animation: ballOne 2s infinite alternate;
 }
 body .ball2{
-	left: 4%;
+	left: 60%;
 	width:50px;
 	height: 50px;
-	-moz-animation: ballTwo 10s infinite alternate;
-	-webkit-animation: ballTwo 10s infinite alternate;
-	animation: ballTwo 10s infinite alternate;
+	opacity: 0.5;
+	-moz-animation: ballTwo 2s infinite alternate;
+	-webkit-animation: ballTwo 2s infinite alternate;
+	animation: ballTwo 2s infinite alternate;
 }
 body .ball3{
-	left: 6%;
-	width:50px;
-	height: 50px;
+	left: 75%;
+	width:57px;
+	height: 57px;
+	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballThree 10s infinite alternate;
-	-webkit-animation: ballThree 10s infinite alternate;
-	animation: ballThree 10s infinite alternate;
+	-moz-animation: ballThree 2s infinite alternate;
+	-webkit-animation: ballThree 2s infinite alternate;
+	animation: ballThree 2s infinite alternate;
 }
 body .ball4{
-	left: 8%;
+	left: 17%;
 	width:50px;
 	height: 50px;
+	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballFour 10s infinite alternate;
-	-webkit-animation: ballFour 10s infinite alternate;
-	animation: ballFour 10s infinite alternate;
+	-moz-animation: ballFour 2s infinite alternate;
+	-webkit-animation: ballFour 2s infinite alternate;
+	animation: ballFour 2s infinite alternate;
 }
 body .ball5{
-	left: 10%;
-	width:50px;
-	height: 50px;
+	left: 37%;
+	width:100px;
+	height: 100px;
+	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballFive 10s infinite alternate;
-	-webkit-animation: ballFive 10s infinite alternate;
-	animation: ballFive 10s infinite alternate;
+	-moz-animation: ballFive 2s infinite alternate;
+	-webkit-animation: ballFive 2s infinite alternate;
+	animation: ballFive 2s infinite alternate;
 }
 body .ball6{
-	left: 12%;
-	width:50px;
-	height: 50px;
+	left: 27%;
+	width: 63px;
+	height: 63px;
+	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballSix 10s infinite alternate;
-	-webkit-animation: ballSix 10s infinite alternate;
-	animation: ballSix 10s infinite alternate;
+	-moz-animation: ballSix 2s infinite alternate;
+	-webkit-animation: ballSix 2s infinite alternate;
+	animation: ballSix 2s infinite alternate;
 }
 body .ball7{
 	left: 14%;
 	width:50px;
 	height: 50px;
+	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballSeven 10s infinite alternate;
-	-webkit-animation: ballSeven 10s infinite alternate;
-	animation: ballSeven 10s infinite alternate;
+	-moz-animation: ballSeven 2s infinite alternate;
+	-webkit-animation: ballSeven 2s infinite alternate;
+	animation: ballSeven 2s infinite alternate;
 }
 body .ball8{
-	left: 15%;
-	width:50px;
-	height: 50px;
+	left: 64%;
+	width:58px;
+	height: 58px;
+	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballEight 10s infinite alternate;
-	-webkit-animation: ballEight 10s infinite alternate;
-	animation: ballEight 10s infinite alternate;
+	-moz-animation: ballEight 2s infinite alternate;
+	-webkit-animation: ballEight 2s infinite alternate;
+	animation: ballEight 2s infinite alternate;
 }
 
 
@@ -343,19 +360,12 @@ body .ball8{
 		text-align: center;
 	}
 
-
-	h1{	
+	img.email{
+		width: 4%;
 		position: fixed;
-		width: 100%;
-		padding:0;
-		margin:0;
-		text-align: center;
-		bottom:1em;
-		z-index: 8;
-		color:black;
-		font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
-		font-weight: lighter;
-		font-size:17px;
+		right: 1%;
+		bottom: 1%;
+
 	}
 
 	a{
@@ -364,6 +374,7 @@ body .ball8{
 		position:fixed;
 		bottom:0.5em;
 		right: 1em;
+		z-index: 8;
 	}
 
 
