@@ -2,37 +2,37 @@
 @-webkit-keyframes ballOne{
 	/* at the beginning of the animation, ball one will have these styles  */
 	0%{
-		top: 20%;
+		top: 15%;
 	}
 	/* at the end of the animation, ball one will have these styles  */
 	100%{
-		top: 38%;
+		top: 20%;
 	}
 }
 @-moz-keyframes ballOne{
 	/* at the beginning of the animation, ball one will have these styles  */
 	0%{
-		top: 20%;
+		top: 15%;
 	}
 	/* at the end of the animation, ball one will have these styles  */
 	100%{
-		top: 38%;
+		top: 20%;
 	}
 }
 @keyframes ballOne{
 	/* at the beginning of the animation, ball one will have these styles  */
 	0%{
-		top: 20%;
+		top: 15%;
 	}
 	/* at the end of the animation, ball one will have these styles  */
 	100%{
-		top: 38%;
+		top: 20%;
 	}
 }
 
 @-webkit-keyframes ballTwo{
 	0%{
-		top: 20%;
+		top: 30%;
 	}
 	100%{
 		top: 35%;
@@ -40,15 +40,15 @@
 }
 @-moz-keyframes ballTwo{
 	0%{
-		top: 20%;
+		top: 30%;
 	}
 	100%{
-		top: 35%;
+		top:35%;
 	}
 }
 @keyframes ballTwo{
 	0%{
-		top: 20%;
+		top: 30%;
 	}
 	100%{
 		top: 35%;
@@ -57,26 +57,26 @@
 
 @-webkit-keyframes ballThree{
 	0%{
-		top: 25%;
+		top: 20%;
 	}
 	100%{
-		top: 38%;
+		top: 25%;
 	}
 }
 @-moz-keyframes ballThree{
 	0%{
-		top: 25%;
+		top: 20%;
 	}
 	100%{
-		top: 38%;
+		top: 25%;
 	}
 }
 @keyframes ballThree{
 	0%{
-		top: 25%;
+		top: 20%;
 	}
 	100%{
-		top: 38%;
+		top: 25%;
 	}
 }
 
@@ -85,7 +85,7 @@
 		top: 25%;
 	}
 	100%{
-		top: 35%;
+		top: 30%;
 	}
 }
 @-moz-keyframes ballFour{
@@ -93,7 +93,7 @@
 		top: 25%;
 	}
 	100%{
-		top: 35%;
+		top: 30%;
 	}
 }
 @keyframes ballFour{
@@ -101,38 +101,38 @@
 		top: 25%;
 	}
 	100%{
-		top: 35%;
+		top: 30%;
 	}
 }
 
 @-webkit-keyframes ballFive{
 	0%{
-		top: 45%;
+		top: 60%;
 	}
 	100%{
-		top: 60%;
+		top: 65%;
 	}
 }
 @-moz-keyframes ballFive{
 	0%{
-		top: 45%;
+		top: 60%;
 	}
 	100%{
-		top: 60%;
+		top: 65%;
 	}
 }
 @keyframes ballFive{
 	0%{
-		top: 45%;
+		top: 60%;
 	}
 	100%{
-		top: 60%;
+		top: 65%;
 	}
 }
 
 @-webkit-keyframes ballSix{
 	0%{
-		top: 45%;
+		top: 55%;
 	}
 	100%{
 		top: 60%;
@@ -140,7 +140,7 @@
 }
 @-moz-keyframes ballSix{
 	0%{
-		top: 45%;
+		top: 55%;
 	}
 	100%{
 		top: 60%;
@@ -148,7 +148,7 @@
 }
 @keyframes ballSix{
 	0%{
-		top: 45%;
+		top: 55%;
 	}
 	100%{
 		top: 60%;
@@ -156,31 +156,31 @@
 }
 @-webkit-keyframes ballSeven{
 	0%{
-		top: 45%;
+		top: 65%;
 	}
 	100%{
-		top: 60%;
+		top: 70%;
 	}
 }
 @-moz-keyframes ballSeven{
 	0%{
-		top: 45%;
+		top: 65%;
 	}
 	100%{
-		top: 60%;
+		top: 70%;
 	}
 }
 @keyframes ballSeven{
 	0%{
-		top: 45%;
+		top: 65%;
 	}
 	100%{
-		top: 60%;
+		top: 70%;
 	}
 }
 @-webkit-keyframes ballEight{
 	0%{
-		top: 45%;
+		top: 55%;
 	}
 	100%{
 		top: 60%;
@@ -188,7 +188,7 @@
 }
 @-moz-keyframes ballEight{
 	0%{
-		top: 45%;
+		top: 55%;
 	}
 	100%{
 		top: 60%;
@@ -196,7 +196,7 @@
 }
 @keyframes ballEight{
 	0%{
-		top: 45%;
+		top: 55%;
 	}
 	100%{
 		top: 60%;
@@ -247,27 +247,27 @@ div#logo{
 	left:10%;
 	background-position: center center;
 	background-size: cover;
-	box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.20), inset 0px -5px 15px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.20), inset 0px -5px 15px 0px rgba(0,0,0,0.7);
 }
 
 body .ball1{
-	left: 38%;
+	left: 35%;
 	width:80px;
 	height: 80px;
 	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballOne 2s infinite alternate;
-	-webkit-animation: ballOne 2s infinite alternate;
-	animation: ballOne 2s infinite alternate;
+	-moz-animation: ballOne 2.5s linear infinite alternate;
+	-webkit-animation: ballOne 2.5s linear infinite alternate;
+	animation: ballOne 2.5s linear infinite alternate;
 }
 body .ball2{
-	left: 60%;
+	left: 59%;
 	width:50px;
 	height: 50px;
 	opacity: 0.5;
-	-moz-animation: ballTwo 2s infinite alternate;
-	-webkit-animation: ballTwo 2s infinite alternate;
-	animation: ballTwo 2s infinite alternate;
+	-moz-animation: ballTwo 2.5s linear infinite alternate;
+	-webkit-animation: ballTwo 2.5s linear infinite alternate;
+	animation: ballTwo 2.5s linear infinite alternate;
 }
 body .ball3{
 	left: 75%;
@@ -275,9 +275,9 @@ body .ball3{
 	height: 57px;
 	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballThree 2s infinite alternate;
-	-webkit-animation: ballThree 2s infinite alternate;
-	animation: ballThree 2s infinite alternate;
+	-moz-animation: ballThree 2.5s linear infinite alternate;
+	-webkit-animation: ballThree 2.5s linear infinite alternate;
+	animation: ballThree 2.5s linear infinite alternate;
 }
 body .ball4{
 	left: 17%;
@@ -285,19 +285,19 @@ body .ball4{
 	height: 50px;
 	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballFour 2s infinite alternate;
-	-webkit-animation: ballFour 2s infinite alternate;
-	animation: ballFour 2s infinite alternate;
+	-moz-animation: ballFour 2.5s linear infinite alternate;
+	-webkit-animation: ballFour 2.5s linear infinite alternate;
+	animation: ballFour 2.5s linear infinite alternate;
 }
 body .ball5{
-	left: 37%;
+	left: 46%;
 	width:100px;
 	height: 100px;
 	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballFive 2s infinite alternate;
-	-webkit-animation: ballFive 2s infinite alternate;
-	animation: ballFive 2s infinite alternate;
+	-moz-animation: ballFive 2.5s linear infinite alternate;
+	-webkit-animation: ballFive 2.5s linear infinite alternate;
+	animation: ballFive 2.5s linear infinite alternate;
 }
 body .ball6{
 	left: 27%;
@@ -305,9 +305,9 @@ body .ball6{
 	height: 63px;
 	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballSix 2s infinite alternate;
-	-webkit-animation: ballSix 2s infinite alternate;
-	animation: ballSix 2s infinite alternate;
+	-moz-animation: ballSix 2.5s linear infinite alternate;
+	-webkit-animation: ballSix 2.5s linear infinite alternate;
+	animation: ballSix 2.5s linear infinite alternate;
 }
 body .ball7{
 	left: 14%;
@@ -315,19 +315,19 @@ body .ball7{
 	height: 50px;
 	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballSeven 2s infinite alternate;
-	-webkit-animation: ballSeven 2s infinite alternate;
-	animation: ballSeven 2s infinite alternate;
+	-moz-animation: ballSeven 2.5s linear infinite alternate;
+	-webkit-animation: ballSeven 2.5s linear infinite alternate;
+	animation: ballSeven 2.5s linear infinite alternate;
 }
 body .ball8{
-	left: 64%;
+	left: 78%;
 	width:58px;
 	height: 58px;
 	opacity: 0.5;
 	/* sets animation of ball one */
-	-moz-animation: ballEight 2s infinite alternate;
-	-webkit-animation: ballEight 2s infinite alternate;
-	animation: ballEight 2s infinite alternate;
+	-moz-animation: ballEight 2.5s linear infinite alternate;
+	-webkit-animation: ballEight 2.5s linear infinite alternate;
+	animation: ballEight 2.5s linear infinite alternate;
 }
 
 

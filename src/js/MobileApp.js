@@ -5,12 +5,12 @@ var MobileApp = function (){
 	 	var link = document.createElement('a');
 	 	link.href = this.urls[i];
 	 	var div = document.createElement('div');
-	 	div.setAttribute("style", "background-image: url(" + this.images[i] + ");")
+	 	div.setAttribute("style", "background-image: url(" + this.images[i] + ");");
 	 	div.setAttribute("class", "ball ball" + (i + 1));
 	 	document.body.appendChild(link);
 	 	link.appendChild(div);
 	 }
 
-}
+};
 
-module.exports = MobileApp
+module.exports = MobileApp;

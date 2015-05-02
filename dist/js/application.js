@@ -1,14 +1,16 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var App = require('./App.js');
-var MobileApp = require('./MobileApp.js')
+var MobileApp = require('./MobileApp.js');
 var domReady = require('domready');
 
 domReady(function(){
-	if (window.innerWidth >= 768){
-    	var app = new App();
+	var app;
+
+	if (window.innerWidth >= 768 || !( function () { try { var canvas = document.createElement( 'canvas' ); return !! ( window.WebGLRenderingContext && ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) ) ); } catch ( e ) { return false; } } )()){
+    	app = new App();
 	}
 	else{
-		var app = new MobileApp();
+		app = new MobileApp();
 	}
 });
 },{"./App.js":4,"./MobileApp.js":7,"domready":2}],2:[function(require,module,exports){
@@ -35310,15 +35312,15 @@ var MobileApp = function (){
 	 	var link = document.createElement('a');
 	 	link.href = this.urls[i];
 	 	var div = document.createElement('div');
-	 	div.setAttribute("style", "background-image: url(" + this.images[i] + ");")
+	 	div.setAttribute("style", "background-image: url(" + this.images[i] + ");");
 	 	div.setAttribute("class", "ball ball" + (i + 1));
 	 	document.body.appendChild(link);
 	 	link.appendChild(div);
 	 }
 
-}
+};
 
-module.exports = MobileApp
+module.exports = MobileApp;
 },{}],8:[function(require,module,exports){
 /**
  * 
