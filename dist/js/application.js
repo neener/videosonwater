@@ -5,8 +5,7 @@ var domReady = require('domready');
 
 domReady(function(){
 	var app;
-
-	if (window.innerWidth >= 768 || !( function () { try { var canvas = document.createElement( 'canvas' ); return !! ( window.WebGLRenderingContext && ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) ) ); } catch ( e ) { return false; } } )()){
+	if (window.innerWidth >= 768 && ( function () { try { var canvas = document.createElement( 'canvas' ); return !! ( window.WebGLRenderingContext && ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) ) ); } catch ( e ) { return false; } } )()){
     	app = new App();
 	}
 	else{
@@ -35306,6 +35305,7 @@ function MirrorLoader(THREE){
 module.exports = MirrorLoader;
 },{}],7:[function(require,module,exports){
 var MobileApp = function (){
+	 document.body.setAttribute('class','mobile');
 	 this.urls = ["https://www.youtube.com/embed/xR8FivNkypw", "https://www.youtube.com/embed/P0d70ExQAdY", "https://www.youtube.com/embed/TbZmVfs7MiM", "https://www.youtube.com/embed/tp-XIvCAwCk", "https://www.youtube.com/embed/iKdyVfT26eo", "https://www.youtube.com/embed/iMrZT8z_avg", "https://www.youtube.com/embed/KGinfh-FDs4", "https://www.youtube.com/embed/BOo2Qx_SWp0"];
 	 this.images = ["/textures/mobile/groundunderwater.jpg", "/textures/mobile/freakudown.jpg", "/textures/mobile/givemeskin.jpg", "/textures/mobile/illbemyownreflection.jpg", "/textures/mobile/matchbook.jpg", "/textures/mobile/twentyone.jpg", "/textures/mobile/donttellme.jpg", "/textures/mobile/onlygirlintheworld.jpg"];
 	 for (var i = 0; i < this.urls.length; i++){
