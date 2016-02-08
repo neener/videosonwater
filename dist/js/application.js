@@ -39,13 +39,13 @@ domReady(function(){
   })
 
   return function (fn) {
-    loaded ? setTimeout(fn, 0) : fns.push(fn)
+    loaded ? fn() : fns.push(fn)
   }
 
 });
 
 },{}],3:[function(require,module,exports){
-var self = self || {};// File:src/Three.js
+// File:src/Three.js
 
 /**
  * @author mrdoob / http://mrdoob.com/
@@ -34590,20 +34590,6 @@ THREE.MorphBlendMesh.prototype.update = function ( delta ) {
 
 };
 
-
-// Export the THREE object for **Node.js**, with
-// backwards-compatibility for the old `require()` API. If we're in
-// the browser, add `_` as a global object via a string identifier,
-// for Closure Compiler "advanced" mode.
-if (typeof exports !== 'undefined') {
-  if (typeof module !== 'undefined' && module.exports) {
-    exports = module.exports = THREE;
-  }
-  exports.THREE = THREE;
-} else {
-  this['THREE'] = THREE;
-}
-
 },{}],4:[function(require,module,exports){
 var THREE = require('three');
 require('./MirrorLoader.js')(THREE);
@@ -34822,12 +34808,14 @@ App.prototype.addBalls = function(){
 	var textures = [
 			{texturePath: "/textures/videos/montagegroundunderwater.jpg", settings: {scale: 0.035, maxz: 13, minz: 10, direction:1, position: {x: 7 , y: 20 , z: 14 }}}, 
 			{texturePath: "/textures/videos/montagefreakudown.jpg", settings: {scale: 0.025, maxz: 12, minz: 11, direction:1, position: {x: -5 , y: 15, z: 8 }}}, 
-			{texturePath: "/textures/videos/montagegivemeskin.jpg", settings: {scale: 0.025, maxz: 11, minz: 9, direction:1, position: {x: -15 , y: 20 , z: 10 }}},
+			{texturePath: "/textures/videos/montagegivemeskin.jpg", settings: {scale: 0.018, maxz: 11, minz: 9, direction:1, position: {x: -15 , y: 20 , z: 10 }}},
 			{texturePath: "/textures/videos/montageillbemyownreflection.jpg", settings: {scale: 0.040, maxz: -7, minz: -9, direction:1, position: {x: -18, y: 7, z: -10 }}}, 
 			{texturePath: "/textures/videos/montagematchbook.jpg", settings: {scale: 0.037, maxz: -6, minz: -8, direction: 1, position: {x: 5 , y: 35 , z: -7 }}}, 
 			{texturePath: "/textures/videos/montagetwentyone.jpg", settings: {scale: 0.035, maxz: -7, minz: -9, direction:1, position: {x: 15, y: 7, z: -10 }}},
 			{texturePath: "/textures/videos/montagedonttellme.jpg", settings: {scale: 0.025,  maxz: -7, minz: -9, direction:1, position: {x: 25 , y: 7, z: -9 }}}, 
-			{texturePath: "/textures/videos/montageonlygirlintheworld.jpg", settings: {scale: 0.025, maxz: 11, minz: 9, direction:1, position: {x: 20, y: 10, z: 10 }}}
+			{texturePath: "/textures/videos/montageonlygirlintheworld.jpg", settings: {scale: 0.025, maxz: 11, minz: 9, direction:1, position: {x: 20, y: 10, z: 10 }}},
+			{texturePath: "/textures/videos/dear_diary_montage.jpg", settings: {scale: 0.035, maxz: 11, minz: 9, direction:1, position: {x: 30, y: 10, z: 10 }, frames: 107}},
+			{texturePath: "/textures/videos/i_lose_myselfy_montage.jpg", settings: {scale: 0.035, maxz: 11, minz: 9, direction:1, position: {x: -15, y: 7, z: 10 }, frames: 107}}
 
 	];
 	
@@ -34980,6 +34968,7 @@ module.exports = App;
     this.scale = settings.scale;
     this.miny = settings.minz;
     this.maxy = settings.maxz;
+    this.frames = settings.frames || 120;
  
     this.currentDirection = settings.direction;
 
@@ -34996,7 +34985,7 @@ Ball.prototype.render = function(){
     this.ctx.drawImage( this.image, column * 256, row * 256, 256, 256, 0, 0, 256, 256 );
     this.material.map.needsUpdate = true;
 
-    this.counter = this.counter < 120 ? this.counter + 1 : 0;
+    this.counter = this.counter < this.frames ? this.counter + 1 : 0;
 };
 
 Ball.prototype.move = function(){

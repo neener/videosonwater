@@ -215,12 +215,14 @@ App.prototype.addBalls = function(){
 	var textures = [
 			{texturePath: "/textures/videos/montagegroundunderwater.jpg", settings: {scale: 0.035, maxz: 13, minz: 10, direction:1, position: {x: 7 , y: 20 , z: 14 }}}, 
 			{texturePath: "/textures/videos/montagefreakudown.jpg", settings: {scale: 0.025, maxz: 12, minz: 11, direction:1, position: {x: -5 , y: 15, z: 8 }}}, 
-			{texturePath: "/textures/videos/montagegivemeskin.jpg", settings: {scale: 0.025, maxz: 11, minz: 9, direction:1, position: {x: -15 , y: 20 , z: 10 }}},
+			{texturePath: "/textures/videos/montagegivemeskin.jpg", settings: {scale: 0.018, maxz: 11, minz: 9, direction:1, position: {x: -15 , y: 20 , z: 10 }}},
 			{texturePath: "/textures/videos/montageillbemyownreflection.jpg", settings: {scale: 0.040, maxz: -7, minz: -9, direction:1, position: {x: -18, y: 7, z: -10 }}}, 
 			{texturePath: "/textures/videos/montagematchbook.jpg", settings: {scale: 0.037, maxz: -6, minz: -8, direction: 1, position: {x: 5 , y: 35 , z: -7 }}}, 
 			{texturePath: "/textures/videos/montagetwentyone.jpg", settings: {scale: 0.035, maxz: -7, minz: -9, direction:1, position: {x: 15, y: 7, z: -10 }}},
 			{texturePath: "/textures/videos/montagedonttellme.jpg", settings: {scale: 0.025,  maxz: -7, minz: -9, direction:1, position: {x: 25 , y: 7, z: -9 }}}, 
-			{texturePath: "/textures/videos/montageonlygirlintheworld.jpg", settings: {scale: 0.025, maxz: 11, minz: 9, direction:1, position: {x: 20, y: 10, z: 10 }}}
+			{texturePath: "/textures/videos/montageonlygirlintheworld.jpg", settings: {scale: 0.025, maxz: 11, minz: 9, direction:1, position: {x: 20, y: 10, z: 10 }}},
+			{texturePath: "/textures/videos/dear_diary_montage.jpg", settings: {scale: 0.035, maxz: 11, minz: 9, direction:1, position: {x: 30, y: 10, z: 10 }, frames: 107}},
+			{texturePath: "/textures/videos/i_lose_myselfy_montage.jpg", settings: {scale: 0.035, maxz: 11, minz: 9, direction:1, position: {x: -15, y: 7, z: 10 }, frames: 107}}
 
 	];
 	
